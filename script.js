@@ -27,4 +27,31 @@ function generatePassword() {
     }
   }
   charLength()
+  // User must select at least one of the following password options
+  function passwordOptions() {
+    wantsLowercase = confirm("Do you want to include lowercase characters?");
+    wantsUppercase = confirm("Do you want to include UPPERCASE characters?");
+    wantsNumbers = confirm("Do you want to include numbers?");
+    wantsSpecial = confirm("Do you want to include special characters?");
+    // If user does not select at least one option, error message will appear
+    if (wantsLowercase == false && wantsUppercase == false && wantsNumbers == false && wantsSpecial == false) {
+      alert("Error! Please select at least one option.");
+      passwordOptions();
+    }
+  }
+  passwordOptions()
 
+  // Condition of the arrays
+  if (wantsLowercase) {
+    resultArray = resultArray.concat(lowercaseSet);
+  }
+  if (wantsUppercase) {
+    resultArray = resultArray.concat(uppercaseSet);
+  }
+  if (wantsNumbers) {
+    resultArray = resultArray.concat(numberSet);
+  }
+  if (wantsSpecial) {
+    resultArray = resultArray.concat(specialcharSet);
+  }
+  console.log(resultArray)
