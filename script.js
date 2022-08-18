@@ -55,3 +55,23 @@ function generatePassword() {
     resultArray = resultArray.concat(specialcharSet);
   }
   console.log(resultArray)
+
+  // This is what generates a password
+  for (var i = 0; i < passwordLength; i++) {
+    userArray.push(resultArray[Math.floor(Math.random() * resultArray.length)]);
+  }
+  return userArray.join("");
+}
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
